@@ -1,12 +1,12 @@
 package com.example.journalApp.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
-public class HealthCheck{
+public class HealthCheck {
     @GetMapping("/health-check")
-    public String healthCheck(){
+    public String healthCheck() {
         return "OK";
     }
 }
