@@ -1,5 +1,7 @@
 package com.example.journalApp.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.example.journalApp.entity.JournalEntry;
@@ -13,5 +15,8 @@ public class JournalEntryService {
     public void saveEntry(JournalEntry journalEntry) {
         journalEntryRepository.save(journalEntry);
 
+    }
+    public List<JournalEntry> getAll() {
+        return journalEntryRepository.findAll();
     }
 }
