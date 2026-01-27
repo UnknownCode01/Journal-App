@@ -2,6 +2,8 @@ package com.example.journalApp.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 import com.example.journalApp.entity.JournalEntry;
+
+import java.time.LocalDateTime;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +29,10 @@ class JournalEntryController {
     }
 
     @PostMapping
-    public boolean createEntry(@RequestBody JournalEntry entry) {
+    public JournalEntry createEntry(@RequestBody JournalEntry entry) {
+        entry.setDate(LocalDateTime.now());
         journalEntryService.saveEntry(entry);
-        return true;
+        return entry;
     }
 
     @GetMapping("id/{myId}")
