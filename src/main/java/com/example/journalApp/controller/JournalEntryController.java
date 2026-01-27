@@ -6,6 +6,7 @@ import com.example.journalApp.entity.JournalEntry;
 import java.time.LocalDateTime;
 import java.util.*;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.journalApp.service.JournalEntryService;
-
 
 @RestController
 @RequestMapping("/journal")
@@ -36,21 +36,20 @@ class JournalEntryController {
     }
 
     @GetMapping("id/{myId}")
-    public JournalEntry getJournalEntryById(@PathVariable long myId) {
-
-        return null;
+    public JournalEntry getJournalEntryById(@PathVariable ObjectId myId) {
+        return journalEntryService.findById(myId).orElse(null);
     }
 
     @DeleteMapping("id/{myId}")
-    public boolean deleteJournalEntryById(@PathVariable long myId) {
-
-        return false;
+    public boolean deleteJournalEntryById(@PathVariable ObjectId myId) {
+        journalEntryService.deleteById(myId);
+        return true;
     }
 
     @PutMapping("id/{myId}")
-    public boolean deleteJournalEntryById(@PathVariable long myId, @RequestBody JournalEntry entry) {
+    public JournalEntry deleteJournalEntryById(@PathVariable ObjectId myId, @RequestBody JournalEntry entry) {
 
-        return false;
+        return null;
     }
 
 }
